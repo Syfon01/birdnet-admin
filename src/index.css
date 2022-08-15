@@ -1,13 +1,33 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Moderat";
+  src: url("../public/font/Moderat-Bold.ttf");
+  src: url("../public/font/Moderat-Medium.ttf");
+  src: url("../public/font/Moderat-Regular.ttf");
+
+}
+body{
+  font-family: moderat;
+}
+.btn{
+  @apply rounded-lg py-2 px-5 font-medium shadow-sm
+}
+.link{
+  @apply text-slate-500 font-medium px-6
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.active{
+  @apply text-primary font-semibold
+}
+.btn.active{
+  @apply text-white
+}
+.navbar-link{
+  @apply flex items-center px-2 py-2 text-base font-medium rounded-md text-white hover:bg-green-400
+} 
+.navbar-link.active{
+  @apply bg-primary500 text-white
 }

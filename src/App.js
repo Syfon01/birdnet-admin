@@ -1,24 +1,42 @@
-import logo from './logo.svg';
+import { useState } from "react";
+
 import './App.css';
+import {Routes, Route} from "react-router-dom";
+import Home from './components/Home';
+import Login from './components/auth/Login';
+import Error from './components/Error';
+import Layout from "./components/Layout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import DashboardLayout from "./components/Dashboard/Layout/DashboardLayout";
+import Customer from "./components/Dashboard/Customer/index";
+import Transactions from "./components/Dashboard/Transactions/index";
+import Roles from "./components/Dashboard/Roles/index";
+import Devices from "./components/Dashboard/Devices/index";
+import Reports from "./components/Dashboard/Reports/index"
+
 
 function App() {
+  const [user, setUser] = useState(null)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login setUser={setUser}></Login>} />
+          <Route path="*" element={<Error />} />
+        </Route>
+
+        <Route element={<ProtectedRoute user={user} />}>
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<Customer />} />
+            <Route path="/transactions" element={<Transactions />} />
+            <Route path="/roles" element={<Roles />} />
+            <Route path="/devices" element={<Devices />} />
+            <Route path="/reports" element={<Reports />} />
+          </Route>
+        </Route>
+      </Routes>
+    </>
   );
 }
 
