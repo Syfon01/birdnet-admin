@@ -1,24 +1,40 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import logo from "../../img/Logo.svg";
+import React, { useState } from 'react'
+import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import logo from '../../img/Logo.svg'
 
-const Login = ({ setUser }) => {
+
+async function loginUser(credentials) {
+  return fetch("http://localhost:8080/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
+export default function Login  ({setUser}) {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
-    if (!email || !password) return;
-    setUser({ email, password });
-    navigate("/dashboard");
-  };
+    console.log(email,password);
+    const token = await loginUser ({
+      email,password
+    })
+    if(!email || !password) return;
+    setUser(token);
+    navigate('/dashboard')
+    
+  }
   const onChangeEmail = (e) => {
     const email = e.target.value;
     setEmail(email);
-  };
+  }
   const onChangePassword = (e) => {
     const password = e.target.value;
     setPassword(password);
@@ -132,6 +148,9 @@ const Login = ({ setUser }) => {
       </div>
     </div>
   );
-};
+}
 
-export default Login;
+Login.propTypes = {
+  setUser: PropTypes.func.isRequired
+};
+// export default Login

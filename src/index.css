@@ -26,8 +26,8 @@ body{
   @apply text-white
 }
 .navbar-link{
-  @apply flex items-center px-2 py-2 text-base font-medium rounded-md text-white hover:bg-green-400
+  @apply flex items-center px-2 py-2 text-base font-medium rounded-md text-[#F2F4F7] hover:bg-gray-700
 } 
 .navbar-link.active{
-  @apply bg-primary500 text-white
+  @apply bg-[#344054] text-white
 }

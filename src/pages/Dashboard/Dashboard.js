@@ -4,8 +4,7 @@ import DashboardLayout from './Layout/DashboardLayout'
 const Dashboard = () => {
   return (
     <>
-    <DashboardLayout />
-    
+      <DashboardLayout />
     </>
   )
 }
