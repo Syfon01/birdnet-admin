@@ -26,8 +26,12 @@ body{
   @apply text-white
 }
 .navbar-link{
-  @apply flex items-center px-2 py-2 text-base font-medium rounded-md text-[#F2F4F7] hover:bg-gray-700
+  @apply flex items-center px-2 py-2 text-base font-medium rounded-md text-[#F2F4F7] hover:bg-gray-700;
 } 
 .navbar-link.active{
-  @apply bg-[#344054] text-white
+  @apply bg-[#344054] text-white;
+}
+.btn-export{
+  @apply border border-[#D0D5DD] rounded-[50px] px-3 py-1.5 text-sm;
+  box-shadow: 0px 1px 2px 0px #1018280D;
 }

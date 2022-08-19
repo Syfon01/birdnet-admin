@@ -9,13 +9,13 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import HomeAdmin from "./pages/Dashboard/Home/index"
-import Customer from "./pages/Dashboard/Customer/index";
+import Customer from "./pages/Dashboard/Customer/Index";
 import Transactions from "./pages/Dashboard/Transactions/index";
 import Roles from "./pages/Dashboard/Roles/index";
 import Devices from "./pages/Dashboard/Devices/index";
 import Reports from "./pages/Dashboard/Reports/index"
 // import useToken from "./components/auth/useToken";
-import SessionTimeOut from "./components/auth/SessionTimeOut";
+// import SessionTimeOut from "./components/auth/SessionTimeOut";
 
 function App() {
   
@@ -24,7 +24,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/home" element={<Layout />}>
           <Route index element={<Home />} />
           {/* <Route path="login" element={<Login setUser={setToken}></Login>} /> */}
           <Route path="login" element={<Login setUser={setUser}></Login>} />
@@ -32,18 +32,18 @@ function App() {
         </Route>
 
         {/* <Route element={<ProtectedRoute user={token} />}> */}
-        <Route element={<ProtectedRoute user={user} />}>
+        {/* <Route element={<ProtectedRoute user={user} />}> */}
           <Route element={<DashboardLayout />}>
-            <Route path="/dashboard" element={<HomeAdmin />} />
+            <Route path="/" element={<HomeAdmin />} />
             <Route path="/customer" element={<Customer />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/roles" element={<Roles />} />
             <Route path="/devices" element={<Devices />} />
             <Route path="/reports" element={<Reports />} />
-          </Route>
+          {/* </Route> */}
         </Route>
       </Routes>
-      <SessionTimeOut />
+      {/* <SessionTimeOut /> */}
     </>
   );
 }

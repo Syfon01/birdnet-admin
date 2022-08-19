@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#07875D",
-        primary500: "#2CA955"
+        primary500: "#2CA955",
+        gray500:"#667085"
       },
       fontFamily:{
         moderat: ["Moderat", "sans-serif"]

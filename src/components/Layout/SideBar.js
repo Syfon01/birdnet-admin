@@ -100,7 +100,7 @@ const SideBar = ({click, close}) => {
                 </Transition.Child>
 
                 <div className="flex items-center flex-shrink-0 px-4">
-                  <img className="w-auto h-8" src={logo} alt="Bird" />
+                  <img className="w-20 h-8" src={logo} alt="Bird" />
                 </div>
                 <div className="flex-1 h-0 mt-5 overflow-y-auto">
                   <nav className="px-2 mt-4 space-y-2">
@@ -178,7 +178,7 @@ const SideBar = ({click, close}) => {
       <div className="hidden md:flex md:w-64 md:flex-col md:fixed md:inset-y-0">
         <div className="flex flex-col flex-grow pt-5 bg-[#101828] overflow-y-auto">
           <div className="flex items-center flex-shrink-0 px-4">
-            <img className="w-auto h-8" src={logo} alt="Workflow" />
+            <img className="w-20 h-8" src={logo} alt="Workflow" />
           </div>
           <div className="flex flex-col flex-1 mt-5">
             <nav className="flex-1 px-2 pb-4 mt-4 space-y-2">

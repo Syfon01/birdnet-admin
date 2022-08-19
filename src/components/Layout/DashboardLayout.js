@@ -14,24 +14,23 @@ const DashboardLayout = ({ user }) => {
   return (
     <>
       <SideBar click={sidebarOpen} close={handleClose} />
-      <div className="md:pl-64 flex flex-col flex-1">
+      <div className="flex flex-col flex-1 md:pl-64">
         {/* Header part  */}
-        <div className="sticky top-0 z-10 flex-shrink-0 flex h-16 bg-white shadow md:hidden">
+        <div className="sticky top-0 z-10 flex flex-shrink-0 h-16 bg-white shadow md:hidden">
           <button
             type="button"
-            className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 md:hidden"
+            className="px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary md:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>
-            <MenuAlt2Icon className="h-6 w-6" aria-hidden="true" />
+            <MenuAlt2Icon className="w-6 h-6" aria-hidden="true" />
           </button>
-          
         </div>
         {/* end of header  */}
 
-        <main>
+        <main className="bg-[#FCFCFD] min-h-screen">
           <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="px-4 mx-auto max-w-7xl sm:px-6 md:px-8">
               <Outlet />
             </div>
           </div>
