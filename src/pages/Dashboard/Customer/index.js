@@ -4,9 +4,10 @@ import AddButton from '../../../components/Buttons/AddButton';
 import ExportButton from '../../../components/Buttons/ExportButton';
 import TabButtons from '../../../components/Tabs/TabButtons';
 import TabContent from '../../../components/Tabs/TabContent';
-
+import Table from '../../../components/Table/Index'
+import DeactivatedTable from '../../../components/Table/DeactivatedTable';
 const Index = () => {
-const [activeTab, setActiveTab] = useState("tab1");
+const [activeTab, setActiveTab] = useState("activeTab");
 
   return (
     <>
@@ -18,10 +19,10 @@ const [activeTab, setActiveTab] = useState("tab1");
         <div className="w-full">
           <div className="flex md:justify-end">
             <div className="mr-4">
-              <ExportButton/>
+              <ExportButton />
             </div>
             <div>
-              <AddButton/>
+              <AddButton />
             </div>
           </div>
         </div>
@@ -29,29 +30,28 @@ const [activeTab, setActiveTab] = useState("tab1");
 
       <div className="mt-5 Tables">
         <div className="mb-4 border-b border-gray-200">
-        <ul className="flex">
-          <TabButtons
-            name="Active"
-            id="tab1"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-          <TabButtons
-            name="Deactivated"
-            id="tab2"
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
-        </ul>
-    </div>
+          <ul className="flex">
+            <TabButtons
+              name="Active"
+              id="activeTab"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+            <TabButtons
+              name="Deactivated"
+              id="deactivatedTab"
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          </ul>
+        </div>
         <div className="outlet">
-          <TabContent id="tab1" activeTab={activeTab}>
-            <p>Active</p>
+          <TabContent id="activeTab" activeTab={activeTab}>
+            <Table />
           </TabContent>
-          <TabContent id="tab2" activeTab={activeTab}>
-            <p>Deactivated</p>
+          <TabContent id="deactivatedTab" activeTab={activeTab}>
+            <DeactivatedTable />
           </TabContent>
-          
         </div>
       </div>
     </>

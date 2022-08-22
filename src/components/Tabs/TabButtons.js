@@ -11,7 +11,7 @@ const TabButtons = ({ id, name, activeTab, setActiveTab }) => {
   return (
     <>
       <div className="">
-          <nav className="flex -mb-px space-x-8 tabs" aria-label="Tabs">
+          <nav className="flex -mb-px space-x-8" aria-label="Tabs">
             <button
               key={id}
               onClick={handleClick}

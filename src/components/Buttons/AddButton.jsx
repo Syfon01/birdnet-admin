@@ -3,7 +3,7 @@ import PlusIcon from '../../img/icons/plus.svg'
 const AddButton = () => {
   return (
     <button className="flex items-center px-3 py-1.5 text-white rounded-[50px] bg-primary500 text-sm">
-      <img src={PlusIcon} className="mr-2" alt="export" srcset="" />
+      <img src={PlusIcon} className="mr-2" alt="export" srcSet="" />
       Add Customer
     </button>
   );

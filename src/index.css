@@ -20,7 +20,7 @@ body{
 }
 
 .active{
-  @apply text-primary font-semibold
+  @apply text-primary font-semibold;
 }
 .btn.active{
   @apply text-white
@@ -34,4 +34,29 @@ body{
 .btn-export{
   @apply border border-[#D0D5DD] rounded-[50px] px-3 py-1.5 text-sm;
   box-shadow: 0px 1px 2px 0px #1018280D;
+}
+
+/* table styling  */
+.outlet{
+  border: 1px solid #EAECF0;
+  box-shadow: 0px 1px 2px 0px #1018280F;
+  box-shadow: 0px 1px 3px 0px #1018281A;
+  border-radius: 8px!important;
+  color: #667085;
+}
+
+/* .outlet div{
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+} */
+.rdt_Pagination{
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.kWAsOx{
+  font-size: 18px;
+  font-weight: 500!important;
+}
+header.dTgEdo{
+  /* justify-content: space-between!important; */
 }

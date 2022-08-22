@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* <Route path="login" element={<Login setUser={setToken}></Login>} /> */}
+           {/* <Route path="login" element={<Login setUser={setToken}></Login>} /> */}
           <Route path="login" element={<Login setUser={setUser}></Login>} />
           <Route path="*" element={<Error />} />
         </Route>
