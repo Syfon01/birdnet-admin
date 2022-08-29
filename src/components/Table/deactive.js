@@ -11,6 +11,6 @@ export default [
     transaction_count: 5,
     last_activity: "36 mins ago",
     kyc: "3rd level",
+    posterUrl: "/view-customer",
   },
- 
 ];

@@ -2,7 +2,8 @@
 import avatar from "../../img/Avatar.png"
 import avatar2 from "../../img/Avatar2.png";
 
-export default [
+
+export default  [
   {
     id: 1,
     img: avatar,
@@ -14,6 +15,7 @@ export default [
     transaction_count: 5,
     last_activity: "5 mins ago",
     kyc: "2nd level",
+    posterUrl: "/view-customer",
   },
   {
     id: 2,
@@ -25,7 +27,8 @@ export default [
     email: "syfonddd@gmail.com",
     transaction_count: 2,
     last_activity: "5 mins ago",
-    kyc: "2nd level",
+    kyc: "1st level",
+    posterUrl: "/view-customer",
   },
   {
     id: 3,
@@ -37,6 +40,7 @@ export default [
     email: "syfon@gmail.com",
     transaction_count: 30,
     last_activity: "52 mins ago",
-    kyc: "2nd level",
+    kyc: "3rd level",
+    posterUrl: "/view-customer",
   },
 ];

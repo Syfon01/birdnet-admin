@@ -1,4 +1,5 @@
 import Dot from "../../img/icons/dot.svg";
+import { NavLink} from "react-router-dom";
 
 export const Columns = [
   {
@@ -70,6 +71,18 @@ export const Columns = [
       </div>
     ),
     sortable: true,
+    center: true,
+    reorder: true,
+  },
+  {
+    id: 7,
+    name: " ",
+    button: true,
+    selector: (row) => (
+      <NavLink to={row.posterUrl} className="btn font-sm font-medium view-btn" rel="noopener noreferrer">
+				View
+			</NavLink>
+    ),
     center: true,
     reorder: true,
   },

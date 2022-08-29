@@ -55,8 +55,17 @@ body{
 }
 .kWAsOx{
   font-size: 18px;
-  font-weight: 500!important;
+  font-weight: 600!important;
 }
 header.dTgEdo{
   /* justify-content: space-between!important; */
+}
+.rdt_TableHead{
+  color: #667085!important;
+  background-color: #EAECF0!important;
+}
+.view-btn{
+  font-size: 14px!important;
+  font-weight: 500!important;
+  color: #1A6533!important;
 }

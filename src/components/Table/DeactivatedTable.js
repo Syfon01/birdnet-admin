@@ -1,100 +1,143 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
 import deactive from "./deactive";
 import SortIcon from "../../img/icons/arrow-up.svg";
-import Dot from "../../img/icons/dot.svg";
-const columns = [
-  {
-    id: 1,
-    name: "First, Last Name ",
-    cell: (row) => (
-      <div className="flex items-center">
-        <div className="mr-1.5">
-          <img
-            height="30px"
-            width="30px"
-            alt={row.firstName}
-            src={`${row.img}`}
-          />
-        </div>
+import SearchTable from "./SearchTable";
+import DatePicker from "./DatePicker";
+import { Columns } from "./Columns.js";
+import ExportBtn from "../Buttons/ExportButton";
 
-        <div>
-          <span className="font-semibold">{`${row.firstName} ${row.lastName}`}</span>{" "}
-          <br />
-          <span className="">{`${row.country}`}</span>
-        </div>
-      </div>
-    ),
-
-    sortable: true,
-    reorder: true,
+const customStyles = {
+  rows: {
+    style: {
+      minHeight: "60px", // override the row height
+    },
   },
-
-  {
-    id: 2,
-    name: "Phone Number",
-    selector: (row) => row.phone,
-    sortable: true,
-    reorder: true,
-  },
-  {
-    id: 3,
-    name: "Email Address",
-    selector: (row) => row.email,
-    sortable: true,
-    // right: true,
-    reorder: true,
-  },
-  {
-    id: 4,
-    name: "Transaction Count",
-    selector: (row) => row.transaction_count,
-    sortable: true,
-    center: true,
-    reorder: true,
-  },
-  {
-    id: 5,
-    name: "Last Activity",
-    selector: (row) => row.last_activity,
-    sortable: true,
-    // right: true,
-    reorder: true,
-  },
-  {
-    id: 6,
-    name: "KYC Level",
-    selector: (row) => (
-      <div className="py-1">
-        <span className="px-3 py-1 my-2 rounded-full bg-[#ECFDF3] text-[#027A48] font-medium flex items-center">
-          <img src={Dot} className="mr-1 mt-0.5" alt="dot" />
-          <span>{row.kyc}</span>
-        </span>
-      </div>
-    ),
-    sortable: true,
-    center: true,
-    reorder: true,
-  },
-];
+};
 
 const Index = () => {
+  const [data, setData] = useState(deactive);
+  const [searchVal, setSearchVal] = useState("");
+
+  const search = (rows) => {
+    return rows.filter(
+      (row) =>
+        row.firstName.toLowerCase().indexOf(searchVal.toLowerCase()) !== -1 ||
+        row.lastName.toLowerCase().indexOf(searchVal.toLowerCase()) !== -1
+    );
+  };
+
+  function downloadCSV(tableArray) {
+    const link = document.createElement("a");
+    let csv = convertArrayOfObjectsToCSV(tableArray);
+    if (csv == null) return;
+
+    const filename = "customer.csv";
+
+    if (!csv.match(/^data:text\/csv/i)) {
+      csv = `data:text/csv;charset=utf-8,${csv}`;
+    }
+
+    link.setAttribute("href", encodeURI(csv));
+    link.setAttribute("download", filename);
+    link.click();
+  }
+
+  function convertArrayOfObjectsToCSV(myArray) {
+    let result;
+
+    const columnDelimiter = ",";
+    const lineDelimiter = "\n";
+    const keys = Object.keys(myArray[0]);
+
+    result = "";
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    myArray.forEach((item) => {
+      let ctr = 0;
+      keys.forEach((key) => {
+        if (ctr > 0) result += columnDelimiter;
+
+        result += item[key];
+
+        ctr++;
+      });
+      result += lineDelimiter;
+    });
+
+    return result;
+  }
+
+  const actionsMemo = useMemo(
+    () => (
+      <ExportBtn
+        onExport={() => {
+          const formattedData = data.map((item) => {
+            return {
+              id: item.id,
+              firstName: item.firstName,
+              lastName: item.lastName,
+              email: item.email,
+              phone: item.phone,
+              country: item.country,
+              transaction_count: item.transaction_count,
+              lasat_activity: item.last_activity,
+              kyc: item.kyc,
+            };
+          });
+          downloadCSV(formattedData);
+        }}
+      />
+    ),
+    [data]
+  );
+
   return (
     <>
-      <DataTable
-        className="border"
-        responsive
-        striped
-        highlightOnHover
-        title="Deactivated Customers"
-        columns={columns}
-        data={deactive}
-        defaultSortFieldId={1}
-        sortIcon={<img src={SortIcon} />}
-        pagination
-        selectableRows
-      />
-    </>
+      <div className="py-4">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+            marginBottom: "10px",
+          }}
+        >
+          <div className="w-full md:w-[35%]">
+            <SearchTable
+              SearchTable={(e) => setSearchVal(e.target.value)}
+              filteredText={searchVal}
+            />
+          </div>
+          <div className="flex items-center">
+            <div className="mr-3">
+              <DatePicker />
+            </div>
+            {/* <p>Filter</p> */}
+          </div>
+        </div>
+      </div>
+
+      <div className="outlet pt-4">
+        <DataTable
+          className="border"
+          responsive
+          striped
+          highlightOnHover
+          title="Deactivated Customers"
+          actions={actionsMemo}
+          columns={Columns}
+          data={search(deactive)}
+          defaultSortFieldId={1}
+          sortIcon={<img src={SortIcon} />}
+          pagination
+          selectableRows
+          customStyles={customStyles}
+        />
+      </div>
+    </> 
   );
 };
 
