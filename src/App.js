@@ -8,8 +8,8 @@ import Error from './pages/Error';
 import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardLayout from "./components/Layout/DashboardLayout";
-import HomeAdmin from "./pages/Dashboard/Home/index"
-import Customer from "./pages/Dashboard/Customer/Index";
+import HomeAdmin from "./pages/Dashboard/Home/index";
+import Customer from "./pages/Dashboard/Customer";
 import Transactions from "./pages/Dashboard/Transactions/index";
 import Roles from "./pages/Dashboard/Roles/index";
 import Devices from "./pages/Dashboard/Devices/index";
