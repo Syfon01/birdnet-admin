@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import HomeAdmin from "./pages/Dashboard/Home/index";
-import Customer from "./pages/Dashboard/Customer";
+import Customer from "./pages/Dashboard/Customer/Index";
 import Transactions from "./pages/Dashboard/Transactions/index";
 import Roles from "./pages/Dashboard/Roles/index";
 import Devices from "./pages/Dashboard/Devices/index";
