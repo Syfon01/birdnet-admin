@@ -15,7 +15,7 @@ export default  [
     transaction_count: 5,
     last_activity: "5 mins ago",
     kyc: "2nd level",
-    posterUrl: "/view-customer",
+    posterUrl: `customer`,
   },
   {
     id: 2,

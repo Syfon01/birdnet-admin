@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { SearchIcon } from '@heroicons/react/outline';
 
-const SearchTable = ({ SearchTable, filteredText }) => {
+const SearchTable = ({ SearchTable, filteredText, placeholder }) => {
   return (
     <>
       <div className="mt-1 relative rounded-md shadow-sm">
@@ -11,11 +11,11 @@ const SearchTable = ({ SearchTable, filteredText }) => {
         <input
           onChange={SearchTable}
           value={filteredText}
-          type="email"
-          name="email"
-          id="email"
+          type=""
+          name=""
+          id=""
           className="focus:ring-primary-500 focus:border-primary-500 py-2 block w-full pl-10 sm:text-sm border border-gray-300 rounded-md"
-          placeholder="Search for customers"
+          placeholder={placeholder}
         />
       </div>
     </>

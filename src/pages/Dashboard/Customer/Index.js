@@ -2,11 +2,17 @@ import React from 'react'
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import AddButton from '../../../components/Buttons/AddButton';
+import PlusIcon from "../../../img/icons/plus.svg";
 import TabButtons from '../../../components/Tabs/TabButtons';
 import TabContent from '../../../components/Tabs/TabContent';
 import Table from '../../../components/Table/Index'
-import DeactivatedTable from '../../../components/Table/DeactivatedTable';
-const Index = ({open}) => {
+import customers from "../../../components/data/customer";
+import inactiveCustomer from "../../../components/data/deactive";
+import {Columns} from "../../../components/Table/CustomerColumn";
+
+const Index = () => {
+const [data, setData] = useState(customers);
+const [inActiveData, setInActiveData] = useState(inactiveCustomer);
 const [activeTab, setActiveTab] = useState("activeTab");
 const [openModal, setOpenModal] = useState(false)
 
@@ -26,7 +32,7 @@ const cancelButtonRef = useRef(null);
         <div className="w-full">
           <div className="flex md:justify-end">
             <div>
-              <AddButton title={"Add Customer"} open={showModal} />
+              <AddButton icon={PlusIcon} title={"Add Customer"} open={showModal} />
             </div>
           </div>
         </div>
@@ -51,10 +57,20 @@ const cancelButtonRef = useRef(null);
         </div>
         <div className="">
           <TabContent id="activeTab" activeTab={activeTab}>
-            <Table />
+            <Table
+              data={data}
+              columns={Columns}
+              title="Active Customers"
+              searchPlaceholder="Search customers"
+            />
           </TabContent>
           <TabContent id="deactivatedTab" activeTab={activeTab}>
-            <DeactivatedTable />
+            <Table
+              data={inActiveData}
+              columns={Columns}
+              title="Deactived Customers"
+              searchPlaceholder="Search customers"
+            />
           </TabContent>
         </div>
       </div>
@@ -78,11 +94,11 @@ const cancelButtonRef = useRef(null);
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" />
           </Transition.Child>
 
-          <div className="fixed z-10 inset-0 overflow-y-auto">
-            <div className="flex items-end sm:items-center justify-center min-h-full p-4 text-center sm:p-0">
+          <div className="fixed inset-0 z-10 overflow-y-auto">
+            <div className="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -92,12 +108,12 @@ const cancelButtonRef = useRef(null);
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-lg sm:w-full sm:p-6">
+                <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:max-w-lg sm:w-full sm:p-6">
                   <div>
                     <div className="mt-2 sm:mt-2">
                       <Dialog.Title
                         as="h3"
-                        className="text-xl leading-6 font-semibold text-gray-900"
+                        className="text-xl font-semibold leading-6 text-gray-900"
                       >
                         Add Customer
                       </Dialog.Title>
@@ -116,7 +132,7 @@ const cancelButtonRef = useRef(null);
                                 name="first-name"
                                 id="first-name"
                                 autoComplete="given-name"
-                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
+                                className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               />
                             </div>
 
@@ -132,7 +148,7 @@ const cancelButtonRef = useRef(null);
                                 name="last-name"
                                 id="last-name"
                                 autoComplete="family-name"
-                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
+                                className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               />
                             </div>
 
@@ -148,7 +164,7 @@ const cancelButtonRef = useRef(null);
                                 name="email-address"
                                 id="email-address"
                                 autoComplete="email"
-                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
+                                className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               />
                             </div>
                             <div className="col-span-6 sm:col-span-3">
@@ -161,9 +177,9 @@ const cancelButtonRef = useRef(null);
                               <input
                                 type="text"
                                 name="first-name"
-                                id="first-name" 
+                                id="first-name"
                                 autoComplete="given-name"
-                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
+                                className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               />
                             </div>
 
@@ -179,7 +195,7 @@ const cancelButtonRef = useRef(null);
                                 name="street-address"
                                 id="street-address"
                                 autoComplete="street-address"
-                                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
+                                className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               />
                             </div>
 
@@ -194,7 +210,7 @@ const cancelButtonRef = useRef(null);
                                 id="country"
                                 name="country"
                                 autoComplete="country-name"
-                                className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm text-gray-600"
+                                className="block w-full px-3 py-2 mt-1 text-gray-600 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               >
                                 <option>NG</option>
                                 <option>US</option>
@@ -211,7 +227,7 @@ const cancelButtonRef = useRef(null);
                                 id="country"
                                 name="country"
                                 autoComplete="country-name"
-                                className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm text-gray-600"
+                                className="block w-full px-3 py-2 mt-1 text-gray-600 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary500 focus:border-primary500 sm:text-sm"
                               >
                                 <option>1st level</option>
                                 <option>2nd level</option>
@@ -219,17 +235,17 @@ const cancelButtonRef = useRef(null);
                               </select>
                             </div>
                           </div>
-                          <div className="mt-7 sm:mt-10 mb-4 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+                          <div className="mb-4 mt-7 sm:mt-10 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
                             <button
                               type="button"
-                              className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary text-base font-medium text-white hover:bg-primary500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pri sm:col-start-2 sm:text-sm"
+                              className="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white border border-transparent rounded-md shadow-sm bg-primary hover:bg-primary500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pri sm:col-start-2 sm:text-sm"
                               onClick={() => setOpenModal(false)}
                             >
                               Proceed
                             </button>
                             <button
                               type="button"
-                              className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-100  sm:mt-0 sm:col-start-1 sm:text-sm"
+                              className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 sm:mt-0 sm:col-start-1 sm:text-sm"
                               onClick={() => setOpenModal(false)}
                               ref={cancelButtonRef}
                             >

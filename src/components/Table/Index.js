@@ -1,10 +1,8 @@
 import React, { useMemo, useState } from "react";
 import DataTable from "react-data-table-component";
-import customers from "./customer";
 import SortIcon from "../../img/icons/arrow-up.svg";
 import SearchTable from "./SearchTable";
 import DatePicker from "./DatePicker";
-import { Columns } from "./Columns.js";
 import ExportBtn from "../Buttons/ExportButton";
 
 const customStyles = {
@@ -15,9 +13,8 @@ const customStyles = {
   },
 };
 
-const Index = () => {
-  const [data, setData] = useState(customers);
-  const [searchVal, setSearchVal] = useState(""); 
+const Index = ({ data, title, searchPlaceholder, columns }) => {
+  const [searchVal, setSearchVal] = useState("");
 
   const search = (rows) => {
     return rows.filter(
@@ -109,6 +106,7 @@ const Index = () => {
             <SearchTable
               SearchTable={(e) => setSearchVal(e.target.value)}
               filteredText={searchVal}
+              placeholder={searchPlaceholder}
             />
           </div>
           <div className="flex items-center">
@@ -126,9 +124,9 @@ const Index = () => {
           responsive
           striped
           highlightOnHover
-          title="All customers"
+          title={title}
           actions={actionsMemo}
-          columns={Columns}
+          columns={columns}
           data={search(data)}
           defaultSortFieldId={1}
           sortIcon={<img src={SortIcon} alt="sortIcon" />}

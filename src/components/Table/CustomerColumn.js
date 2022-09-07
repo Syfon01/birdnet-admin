@@ -79,7 +79,7 @@ export const Columns = [
     name: " ",
     button: true,
     selector: (row) => (
-      <NavLink to={row.posterUrl} className="btn font-sm font-medium view-btn" rel="noopener noreferrer">
+      <NavLink to={`/customer/${row.id}`} className="btn font-sm font-medium view-btn" rel="noopener noreferrer">
 				View
 			</NavLink>
     ),
