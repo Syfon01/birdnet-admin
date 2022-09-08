@@ -24,7 +24,7 @@ export default [
     transaction_type: "debit",
     status: "processing",
     dest_acct: "2345677889",
-    dest_name: "Basil Charles",
+    dest_name: "Basil Charles", 
   },
   {
     id: 3,

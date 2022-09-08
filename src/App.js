@@ -16,6 +16,7 @@ import TransactionDetails from "./pages/Dashboard/Transactions/TransactionDetail
 import Accounts from "./pages/Dashboard/Accounts/index";
 import Roles from "./pages/Dashboard/Roles/index";
 import Devices from "./pages/Dashboard/Devices/index";
+import DevicesDetails from "./pages/Dashboard/Devices/DeviceDetails";
 import Reports from "./pages/Dashboard/Reports/index"
 // import useToken from "./components/auth/useToken";
 // import SessionTimeOut from "./components/auth/SessionTimeOut";
@@ -41,10 +42,11 @@ function App() {
           <Route path="/customer" element={<Customer />} />
           <Route path="/customer/:id" element={<CustomerDetails />} />
           <Route path="/transactions" element={<Transactions />} />
-          <Route path="/transaction/:id" element={<TransactionDetails />} />
+          <Route path="/transactions/:id" element={<TransactionDetails />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/roles" element={<Roles />} />
           <Route path="/devices" element={<Devices />} />
+          <Route path="/devices/:id" element={<DevicesDetails />} />
           <Route path="/reports" element={<Reports />} />
           {/* </Route> */}
         </Route>

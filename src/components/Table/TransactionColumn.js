@@ -91,7 +91,7 @@ export const Columns = [
     button: true,
     selector: (row) => (
       <NavLink
-        to={`/transaction/${row.id}`}
+        to={`/transactions/${row.id}`}
         className="btn font-sm font-medium view-btn"
         rel="noopener noreferrer"
       >

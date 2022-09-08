@@ -74,7 +74,7 @@ export const Columns = [
     button: true,
     selector: (row) => (
       <NavLink
-        to={`/device/${row.id}`}
+        to={`/devices/${row.id}`}
         className="btn font-sm font-medium view-btn"
         rel="noopener noreferrer"
       >
