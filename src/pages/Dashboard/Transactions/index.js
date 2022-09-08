@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import customers from "../../../components/data/customer";
-
+import transactions from "../../../components/data/transaction";
+import { Columns } from "../../../components/Table/TransactionColumn";
 import Table from "../../../components/Table/Index";
 const Index = () => {
-  const [data, setData] = useState(customers)
+  const [data, setData] = useState(transactions);
   // const [openModal, setOpenModal] = useState(false);
 
   // const showModal = () => {
@@ -32,6 +32,7 @@ const Index = () => {
       <div className="mt-5 Tables">
         <Table
           data={data}
+          columns={Columns}
           title="Transactions"
           searchPlaceholder="Search Transactions"
         />

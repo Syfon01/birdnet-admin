@@ -12,6 +12,7 @@ import HomeAdmin from "./pages/Dashboard/Home/index";
 import Customer from "./pages/Dashboard/Customer/Index";
 import CustomerDetails from "./pages/Dashboard/Customer/CustomerDetails";
 import Transactions from "./pages/Dashboard/Transactions/index";
+import TransactionDetails from "./pages/Dashboard/Transactions/TransactionDetails";
 import Accounts from "./pages/Dashboard/Accounts/index";
 import Roles from "./pages/Dashboard/Roles/index";
 import Devices from "./pages/Dashboard/Devices/index";
@@ -40,6 +41,7 @@ function App() {
           <Route path="/customer" element={<Customer />} />
           <Route path="/customer/:id" element={<CustomerDetails />} />
           <Route path="/transactions" element={<Transactions />} />
+          <Route path="/transaction/:id" element={<TransactionDetails />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/roles" element={<Roles />} />
           <Route path="/devices" element={<Devices />} />
